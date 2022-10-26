@@ -6,10 +6,14 @@
 dependencies() {
     # Load all shell files in the subdirectories
     load() {
-        for file in $(find "$(dirname "$0")" -type f -name "*.sh"); do
+        for file in $(find "$(current-dir)" -type f -name "*.sh"); do
             source "${file}"
         done
     }
 
     "${@:-help}"
+}
+
+current-dir() {
+    dirname "${BASH_SOURCE[1]}"
 }

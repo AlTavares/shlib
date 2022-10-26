@@ -1,12 +1,21 @@
 #! /usr/bin/env bash
 
-url=https://github.com/AlTavares/shlib/archive/refs/heads/main.zip
-# Downloads and unzips the repository
-curl -L "${url}" -o shlib.zip
-unzip shlib.zip
-trap "rm -rf shlib.zip shlib-main" EXIT
-# Moves the files to the current directory
-mv shlib-main/shlib ./shlib
-source ./shlib/init
+install() (
+    echo "Installing shlib..."
+    url=https://github.com/AlTavares/shlib/archive/refs/heads/main.zip
+    echo "Downloading shlib from ${url}..."
+    curl -L "${url}" -o shlib.zip
+    echo "Unzipping shlib.zip..."
+    unzip shlib.zip
+    trap "rm -rf shlib.zip shlib-main" EXIT
+    echo "Moving shlib files to the current directory..."
+    mv shlib-main/shlib ./shlib
+)
 
-shlib init bash
+init() (
+    echo "Initializing shlib..."
+    source "$(pwd)/shlib/init"
+    shlib init bash
+)
+
+install && init

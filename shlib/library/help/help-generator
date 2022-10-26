@@ -1,0 +1,64 @@
+#!/usr/bin/env node
+const fs = require('fs')
+
+const args = process.argv.slice(2)
+const file = args[0]
+if (!file) {
+    console.error('No file specified')
+    process.exit(1)
+}
+const data = fs.readFileSync(file, 'utf8')
+
+const color = {
+    reset: "\x1b[0m",
+    bright: "\x1b[1m",
+    cyan: "\x1b[36m",
+}
+
+class Method {
+    constructor() {
+        this.parent = ""
+        this.name = ""
+        this.description = []
+    }
+
+    setName(line) {
+        this.name = this.clean(line)
+    }
+
+    addDescriptionLine(line) {
+        this.description.push(this.clean(line))
+    }
+
+    print() {
+        console.log(`${color.cyan}${color.bright}${this.name}${color.reset}\t${this.description.join("")}`)
+    }
+
+    clean(line) {
+        return line
+            .replace("##", "")
+            .replace(/\(.*/, "")
+            .replace("    ", "\t")
+    }
+}
+
+let methods = []
+let currentMethod = new Method()
+
+for (const line of data.split('\n')) {
+    const docMatch = line.match(/##/)
+    if (docMatch) {
+        currentMethod.addDescriptionLine(docMatch.input)
+    }
+
+    const methodMatch = line.match(/\(\)/)
+    if (methodMatch) {
+        currentMethod.setName(methodMatch.input)
+        methods.push(currentMethod)
+        currentMethod = new Method()
+    }
+}
+
+for (const method of methods) {
+    method.print()
+}

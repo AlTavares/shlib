@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+
+source "shlib/library/dependencies.sh"
+dependencies load

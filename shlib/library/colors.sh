@@ -12,6 +12,11 @@ color() {
         echo -ne "\e[1;36m"
     }
 
+    ## Set green color
+    green() {
+        echo -ne "\e[1;32m"
+    }
+
     ## Set yellow color
     yellow() {
         echo -ne "\e[1;33m"

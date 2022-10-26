@@ -14,6 +14,13 @@ banner() {
   color clear
 }
 
+## Displays success message
+success() {
+  color green
+  info "$*"
+  color clear
+}
+
 ## Displays a warning
 warn() {
   color yellow

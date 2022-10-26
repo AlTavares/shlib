@@ -7,3 +7,6 @@ unzip shlib.zip
 trap "rm -rf shlib.zip shlib-main" EXIT
 # Moves the files to the current directory
 mv shlib-main/shlib ./shlib
+source ./shlib/init
+
+shlib init bash

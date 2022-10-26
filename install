@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+
+source "shlib/library/install/install.sh"
+shlib install

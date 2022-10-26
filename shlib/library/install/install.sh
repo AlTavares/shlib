@@ -9,6 +9,7 @@ shlib() {
         bash() {
             # Copy file if it doesn't exist
             if [ -f ./run ]; then
+                warn "run file already exists"
                 exit 0
             fi
             banner "Creating bash template"

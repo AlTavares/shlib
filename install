@@ -14,7 +14,7 @@ install() (
 
 init() (
     echo "Initializing shlib..."
-    source "$(pwd)/shlib/init"
+    source "./shlib/init"
     shlib init bash
     success "Installation finished"
 )

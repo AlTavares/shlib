@@ -16,5 +16,9 @@ shlib() {
             mv "$(current-dir)/templates/run-bash" ./run
             chmod +x ./run
         }
+
+        "${@:-help}"
     }
+
+    "${@:-help}"
 }

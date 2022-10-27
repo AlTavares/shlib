@@ -4,9 +4,9 @@
 
 # Dependencies namespace
 dependencies() {
-    # Load all shell files in the subdirectories
+    # Load all shell files in the shlib directory and subdirectories
     load() {
-        for file in $(find "$(current-dir)" -type f -name "*.sh"); do
+        for file in $(find "$(current-dir)/.." -type f -name "*.sh"); do
             source "${file}"
         done
     }

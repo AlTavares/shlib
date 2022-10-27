@@ -3,6 +3,8 @@
 shlib() {
     update() {
         banner "Updating shlib"
+        bash <(curl https://raw.githubusercontent.com/AlTavares/shlib/main/install)
+        success "Update finished"
     }
 
     init() {

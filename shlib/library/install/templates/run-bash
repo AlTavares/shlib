@@ -4,4 +4,6 @@ init() {
     source ./shlib/init
 }
 
+init
+
 "${@}"

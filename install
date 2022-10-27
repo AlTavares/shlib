@@ -9,6 +9,7 @@ install() (
     unzip shlib.zip
     trap "rm -rf shlib.zip shlib-main" EXIT
     echo "Moving shlib files to the current directory..."
+    rm -rf ./shlib || true
     mv shlib-main/shlib ./shlib
 )
 

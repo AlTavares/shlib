@@ -2,4 +2,4 @@
 
 source "shlib/library/dependencies.sh"
 dependencies load
-parseArguments "$@"
+parse-arguments "$@"

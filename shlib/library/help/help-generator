@@ -62,3 +62,4 @@ for (const line of data.split('\n')) {
 for (const method of methods) {
     method.print()
 }
+console.log()

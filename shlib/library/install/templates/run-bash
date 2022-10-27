@@ -1,9 +1,12 @@
 #! /usr/bin/env bash
 
 init() {
-    source ./shlib/init
+    source ./shlib/init "${@}"
 }
 
-init
+install() {
+    banner "Installing"
+}
 
-"${@}"
+init "${@}"
+"${@-help}"

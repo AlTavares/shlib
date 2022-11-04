@@ -2,6 +2,18 @@
 
 shlib() {
     update() {
+        is-global() {
+            [[ -v flags[g] || -v flags[global] ]]
+        }
+
+        if is-global; then
+            cd "${SHLIB_ROOT}" || exit 1
+        fi
+
+        if [ ! -d "./shlib" ]; then
+            error "shlib directory not found"
+        fi
+
         banner "Updating shlib"
         bash <(curl https://raw.githubusercontent.com/AlTavares/shlib/main/install)
         success "Update finished"
